@@ -1,10 +1,7 @@
 package com.shayan.mvc.springMvcProject.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,15 +12,33 @@ import java.util.List;
 public class ApiController {
 
 
-    @RequestMapping("/hello")
+    @RequestMapping(value="/hello", method = RequestMethod.GET)
 //    @ResponseBody  //we need response as text (bounding the content to the response body)
     public String helloApi(){
         return "Hello, how are you";
     }
 
-    @RequestMapping("/users")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
 //    @ResponseBody
     public List<String> getUserData(){
         return Arrays.asList("ram", "shayan");
     }
+
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    public String createUser(){
+        System.out.println("creating User");
+        return "User created successfully";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
