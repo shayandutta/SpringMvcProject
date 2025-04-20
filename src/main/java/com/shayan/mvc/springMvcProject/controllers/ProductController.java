@@ -2,6 +2,8 @@
 
 package com.shayan.mvc.springMvcProject.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProductController {
+
+    //making logger from the SLF4J LoggerFactory class
+    Logger logger = LoggerFactory.getLogger(ProductController.class);
+
+
+
+
+
+
+
+
     @GetMapping("/getProduct")   // URL -> /getProduct?productName=iphone13StarlightWhite&productId=1321
     //productName wala query parameter will be passed to String productName,
     //dono ka naam sahi raha toh ek baar likhne se hi hota hai
@@ -31,10 +44,18 @@ public class ProductController {
             @PathVariable("productRating") int productRating
     ){
 
+        //sout IS NOT RECOMMENDED IN PROJECTS !!!
 
-        System.out.println("product id: " + productId);
-        System.out.println("productName : " + productName);
-        System.out.println("productRating : " + productRating);
+//        System.out.println("product id: " + productId);
+//        System.out.println("productName : " + productName);
+//        System.out.println("productRating : " + productRating);
+
+        logger.error("ProductName : " + productName);
+        logger.warn("ProductId : " + productId);
+        logger.info("ProductRating : " + productRating);
+        logger.debug("This is testing for debug");
+
+
         return "this is checking the concept of @pathvariable";
     }
 }
